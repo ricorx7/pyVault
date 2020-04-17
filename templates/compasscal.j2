@@ -1,0 +1,38 @@
+{% for compass in compasscals %} 
+    {{compass.Created}} 
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">Heading</th>
+            <th scope="col">Reading (°)</th>
+            <th scope="col">Error (°)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">0°</th>
+                <td>{{ compass.Point1_Post_Hdg|round(1) }}</td>
+                {% if compass.Point1_Post_Hdg > 300 %}
+                    <td>{{ (360 - compass.Point1_Post_Hdg)|round(1) }}</td>
+                {% else %}
+                    <td>{{ (0 - compass.Point1_Post_Hdg)|round(1) }}</td>
+                {% endif %}
+            </tr>
+            <tr>
+                <th scope="row">90°</th>
+                <td>{{ compass.Point2_Post_Hdg|round(1) }}</td>
+                <td>{{ (90 - compass.Point2_Post_Hdg)|round(1) }}</td>
+            </tr>
+            <tr>
+                <th scope="row">180°</th>
+                <td>{{ compass.Point3_Post_Hdg|round(1) }}</td>
+                <td>{{ (180 - compass.Point3_Post_Hdg)|round(1) }}</td>
+            </tr>
+            <tr>
+                <th scope="row">270°</th>
+                <td>{{ compass.Point4_Post_Hdg|round(1) }}</td>
+                <td>{{ (270 - compass.Point4_Post_Hdg)|round(1) }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endfor %} 

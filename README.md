@@ -1,12 +1,12 @@
 # RUN THE APP
 ## Windows
 ```bash
-set FLASK_APP=flask_webserver.py
+set FLASK_APP=app.py
 flask run
 ```
 
 ## Linux
 ```bash
-export FLASK_APP=flask_webserver.py
+export FLASK_APP=app.py
 flask run
 ```

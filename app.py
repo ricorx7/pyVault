@@ -4,11 +4,11 @@ from flask import render_template
 
 # RUN THE APP
 # Windows
-# set FLASK_APP=flask_webserver.py
+# set FLASK_APP=app.py
 # flask run
 #
 # Linux
-# export FLASK_APP=flask_webserver.py
+# export FLASK_APP=app.py
 # flask run
 
 # Set the MongoDB connection and database connection
@@ -22,6 +22,15 @@ def adcp_serial_page(serial_number):
     adcp = mongo.db.adcps.find_one_or_404({"SerialNumber": serial_number})
     print(adcp)
     return render_template("adcp.html", adcp=adcp)
+
+
+@app.route("/cert/<serial_number>")
+def adcp_cert_page(serial_number):
+    adcp = mongo.db.adcps.find_one_or_404({"SerialNumber": serial_number})
+    compass = mongo.db.CompassCalResults.find({"SerialNumber": serial_number, "IsSelected": True})
+    print(adcp)
+    print(compass)
+    return render_template("cert.j2", adcp=adcp, compasscals=compass)
 
 
 @app.route("/")
