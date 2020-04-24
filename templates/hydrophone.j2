@@ -1,122 +1,70 @@
-<h3>Hydrophone Tank Test</h3>
+<div class="row">
+    <h4>Hydrophone Tank Test</h4>
+</div>
 {% for hydro in hydros %}
     <div class="alert alert-info" role="alert">
-    <div class="row">
-        <div class="col">
-            <p><strong>{{ hydro.SubsystemDescStr }}</strong></p>
+        <div class="row">
+            <div class="col">
+                <p><strong>{{ hydro.SubsystemDescStr }}</strong></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <strong>Signal Result: </strong><span class="badge badge-secondary">{{ hydro.TestResultSignal }}</span>
+            </div>
+            <div class="col-md-3">
+                <strong>Range Loss Result: </strong><span class="badge badge-secondary">{{ hydro.TestResultRangeLoss }}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">RESULTS</th>
+                            <th scope="col">Beam 0</th>
+                            <th scope="col">Beam 1</th>
+                            <th scope="col">Beam 2</th>
+                            <th scope="col">Beam 3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Transmit Loss (dB)</th>
+                            <td>{{ hydro.TestResultXmtLossB0|round(2) }}</td>
+                            <td>{{ hydro.TestResultXmtLossB1|round(2) }}</td>
+                            <td>{{ hydro.TestResultXmtLossB2|round(2) }}</td>
+                            <td>{{ hydro.TestResultXmtLossB3|round(2) }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Receiver Loss (dB)</th>
+                            <td>{{ hydro.TestResultRcvLossB0|round(2) }}</td>
+                            <td>{{ hydro.TestResultRcvLossB1|round(2) }}</td>
+                            <td>{{ hydro.TestResultRcvLossB2|round(2) }}</td>
+                            <td>{{ hydro.TestResultRcvLossB3|round(2) }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Range Loss (dB)</th>
+                            <td>{{ hydro.TestResultRangeLossB0|round(2) }}</td>
+                            <td>{{ hydro.TestResultRangeLossB1|round(2) }}</td>
+                            <td>{{ hydro.TestResultRangeLossB2|round(2) }}</td>
+                            <td>{{ hydro.TestResultRangeLossB3|round(2) }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Signal (dB)</th>
+                            <td>{{ hydro.TestResultSignalB0|round(2) }}</td>
+                            <td>{{ hydro.TestResultSignalB1|round(2) }}</td>
+                            <td>{{ hydro.TestResultSignalB2|round(2) }}</td>
+                            <td>{{ hydro.TestResultSignalB3|round(2) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <small>{{hydro.Created}}</small>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-3">
-            <strong>Signal Result: </strong><span class="badge badge-secondary">{{ hydro.TestResultSignal }}</span>
-        </div>
-        <div class="col-md-3">
-            <strong>Range Loss Result: </strong><span class="badge badge-secondary">{{ hydro.TestResultRangeLoss }}</span>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg">
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                    <th scope="col">INPUT</th>
-                    <th scope="col">Beam 0</th>
-                    <th scope="col">Beam 1</th>
-                    <th scope="col">Beam 2</th>
-                    <th scope="col">Beam 3</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">XMIT Decay (m)</th>
-                        <td>{{ hydro.TestInputXmtDecayB0|round(2) }}</td>
-                        <td>{{ hydro.TestInputXmtDecayB1|round(2) }}</td>
-                        <td>{{ hydro.TestInputXmtDecayB2|round(2) }}</td>
-                        <td>{{ hydro.TestInputXmtDecayB3|round(2) }}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Function Gen (Vrms)</th>
-                        <td>{{ hydro.TestInputFuncGenVrmsB0|round(2) }}</td>
-                        <td>{{ hydro.TestInputFuncGenVrmsB1|round(2) }}</td>
-                        <td>{{ hydro.TestInputFuncGenVrmsB2|round(2) }}</td>
-                        <td>{{ hydro.TestInputFuncGenVrmsB3|round(2) }}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Function Gen (dB)</th>
-                        <td>{{ hydro.TestInputFuncGenDbB0|round(2) }}</td>
-                        <td>{{ hydro.TestInputFuncGenDbB1|round(2) }}</td>
-                        <td>{{ hydro.TestInputFuncGenDbB2|round(2) }}</td>
-                        <td>{{ hydro.TestInputFuncGenDbB3|round(2) }}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Receiver (counts)</th>
-                        <td>{{ hydro.TestInputRcvrCountB0|round(2) }}</td>
-                        <td>{{ hydro.TestInputRcvrCountB1|round(2) }}</td>
-                        <td>{{ hydro.TestInputRcvrCountB2|round(2) }}</td>
-                        <td>{{ hydro.TestInputRcvrCountB3|round(2) }}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Receiver Noise Floor (dB)</th>
-                        <td>{{ hydro.TestInputRcvrNFB0|round(2) }}</td>
-                        <td>{{ hydro.TestInputRcvrNFB1|round(2) }}</td>
-                        <td>{{ hydro.TestInputRcvrNFB2|round(2) }}</td>
-                        <td>{{ hydro.TestInputRcvrNFB3|round(2) }}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Receiver (NF High Gain Bucket)</th>
-                        <td>{{ hydro.TestInputRcvrNfBucketB0|round(2) }}</td>
-                        <td>{{ hydro.TestInputRcvrNfBucketB1|round(2) }}</td>
-                        <td>{{ hydro.TestInputRcvrNfBucketB2|round(2) }}</td>
-                        <td>{{ hydro.TestInputRcvrNfBucketB3|round(2) }}</td>
-                    </tr>
-                </tbody>
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">RESULTS</th>
-                        <th scope="col">Beam 0</th>
-                        <th scope="col">Beam 1</th>
-                        <th scope="col">Beam 2</th>
-                        <th scope="col">Beam 3</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Transmit Loss (dB)</th>
-                        <td>{{ hydro.TestResultXmtLossB0|round(2) }}</td>
-                        <td>{{ hydro.TestResultXmtLossB1|round(2) }}</td>
-                        <td>{{ hydro.TestResultXmtLossB2|round(2) }}</td>
-                        <td>{{ hydro.TestResultXmtLossB3|round(2) }}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Receiver Loss (dB)</th>
-                        <td>{{ hydro.TestResultRcvLossB0|round(2) }}</td>
-                        <td>{{ hydro.TestResultRcvLossB1|round(2) }}</td>
-                        <td>{{ hydro.TestResultRcvLossB2|round(2) }}</td>
-                        <td>{{ hydro.TestResultRcvLossB3|round(2) }}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Range Loss (dB)</th>
-                        <td>{{ hydro.TestResultRangeLossB0|round(2) }}</td>
-                        <td>{{ hydro.TestResultRangeLossB1|round(2) }}</td>
-                        <td>{{ hydro.TestResultRangeLossB2|round(2) }}</td>
-                        <td>{{ hydro.TestResultRangeLossB3|round(2) }}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Signal (dB)</th>
-                        <td>{{ hydro.TestResultSignalB0|round(2) }}</td>
-                        <td>{{ hydro.TestResultSignalB1|round(2) }}</td>
-                        <td>{{ hydro.TestResultSignalB2|round(2) }}</td>
-                        <td>{{ hydro.TestResultSignalB3|round(2) }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <small>{{hydro.Created}}</small>
-        </div>
-    </div>
-    </div>
-
 {% endfor %}

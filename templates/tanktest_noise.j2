@@ -1,5 +1,5 @@
 <div class="row">
-    <h3>Beam Check - Tank Test</h3>
+    <h4>Beam Check - Tank Test</h4>
 </div>
 {% for tank in tank_noises %}
 <div class="row">
@@ -9,32 +9,42 @@
                 <tr>
                 <th scope="col"></th>
                 <th scope="col">Noise Floor</th>
+                <th></th>
                 <th scope="col">Amplitude Tank</th>
+                <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="table-info">
-                    <td colspan="3">{{ tank.SubsystemDescStr }}</td>
+                    <td colspan="5">{{ tank.SubsystemDescStr }}</td>
                 </tr>
                 <tr>
                     <th scope="row">Beam 0</th>
-                    <td>{{ tank.Beam0NoiseFloor|round(2) }}</td>
-                    <td>{{ tank.Beam0Signal1mTank|round(2) }}</td>
+                    <td>{{ tank.noise_b_0 }}</td>
+                    <td><span class="badge badge-secondary">{{ tank.noise_result_b_0 }}</span></td>
+                    <td>{{ tank.amp_b_0 }}</td>
+                    <td><span class="badge badge-secondary">{{ tank.amp_result_b_0 }}</span></td>
                 </tr>
                 <tr>
                     <th scope="row">Beam 1</th>
-                    <td>{{ tank.Beam1NoiseFloor|round(2) }}</td>
-                    <td>{{ tank.Beam1Signal1mTank|round(2) }}</td>
+                    <td>{{ tank.noise_b_1 }}</td>
+                    <td><span class="badge badge-secondary">{{ tank.noise_result_b_1 }}</span></td>
+                    <td>{{ tank.amp_b_1 }}</td>
+                    <td><span class="badge badge-secondary">{{ tank.amp_result_b_1 }}</span></td>
                 </tr>
                 <tr>
                     <th scope="row">Beam 2</th>
-                    <td>{{ tank.Beam2NoiseFloor|round(2) }}</td>
-                    <td>{{ tank.Beam2Signal1mTank|round(2) }}</td>
+                    <td>{{ tank.noise_b_2 }}</td>
+                    <td><span class="badge badge-secondary">{{ tank.noise_result_b_2 }}</span></td>
+                    <td>{{ tank.amp_b_2 }}</td>
+                    <td><span class="badge badge-secondary">{{ tank.amp_result_b_2 }}</span></td>
                 </tr>
                 <tr>
                     <th scope="row">Beam 3</th>
-                    <td>{{ tank.Beam3NoiseFloor|round(2) }}</td>
-                    <td>{{ tank.Beam3Signal1mTank|round(2) }}</td>
+                    <td>{{ tank.noise_b_3 }}</td>
+                    <td><span class="badge badge-secondary">{{ tank.noise_result_b_3 }}</span></td>
+                    <td>{{ tank.amp_b_3 }}</td>
+                    <td><span class="badge badge-secondary">{{ tank.amp_result_b_3 }}</span></td>
                 </tr>
             </tbody>
         </table>

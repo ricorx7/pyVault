@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_pymongo import PyMongo
 from flask import render_template
-import compass_cal_helper
+import test_result_helper
 
 # RUN THE APP
 # Windows
@@ -29,14 +29,15 @@ def adcp_serial_page(serial_number):
 def adcp_cert_page(serial_number):
     adcp = mongo.db.adcps.find_one_or_404({"SerialNumber": serial_number})
     compass = mongo.db.CompassCalResults.find({"SerialNumber": serial_number, "IsSelected": True})
-    compass_list = compass_cal_helper.process_compass_cal(compass)
+    compass_list = test_result_helper.process_compass_cal(compass)
     hydro = mongo.db.HydrophoneLakeTestResults.find({"SerialNumber": serial_number, "IsSelected": True})
     tank_noise = mongo.db.TankTestResults.find({"SerialNumber": serial_number, "IsSelected": True, "TankTestType": "Noise"})
+    tank_noise_list = test_result_helper.process_tanktest_noise(tank_noise)
     print(adcp)
     print(compass_list)
     print(hydro)
-    print(tank_noise)
-    return render_template("cert.j2", adcp=adcp, compasscals=compass_list, hydros=hydro, tank_noises=tank_noise)
+    print(tank_noise_list)
+    return render_template("cert.j2", adcp=adcp, compasscals=compass_list, hydros=hydro, tank_noises=tank_noise_list)
 
 @app.route("/")
 def adcp_list_page():
