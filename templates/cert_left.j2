@@ -1,0 +1,98 @@
+
+<table class="table table-sm">
+    <tbody>
+        <tr>
+            <th>Product Number:</th>
+            <td>{{ adcp.ProductNumber }}</td>
+        </tr>
+        <tr>
+            <th>System:</th>
+            <td>{{ adcp.Frequency }}</td>
+        </tr>
+        <tr>
+            <th>System Type:</th>
+            <td>{{ adcp.SystemType }}</td>
+        </tr>
+        <tr>
+            <th>Application:</th>
+            <td>{{ adcp.Application }}</td>
+        </tr>
+        <tr>
+            <th>Depth Rating:</th>
+            <td>{{ adcp.DepthRating }}</td>
+        </tr>
+        <tr>
+            <th>Head Type:</th>
+            <td>{{ adcp.HeadType }}</td>
+        </tr>
+        </tr>
+        <tr>
+            <th>Housing Type:</th>
+            <td>{{ adcp.HousingType }}</td>
+        </tr>
+        <tr>
+            <th>Hardware:</th>
+            <td>{{ adcp.Hardware }}</td>
+        </tr>
+        <tr>
+            <th>Connector:</th>
+            <td>{{ adcp.ConnectorType }}</td>
+        </tr>
+        <tr>
+            <th>Cable Length:</th>
+            <td>{{ adcp.CableLength }}</td>
+        </tr>
+        <tr>
+            <th>Firmware:</th>
+            <td>{{ adcp.Firmware }}</td>
+        </tr>
+        <tr>
+            <th>Software:</th>
+            <td>{{ adcp.Software }}</td>
+        </tr>
+        <tr>
+            <th>Recorder Size:</th>
+            <td>{{ adcp.RecorderSize }}</td>
+        </tr>
+        <tr>
+            <th>Recorder Formatted:</th>
+            {% if adcp.RecorderFormatted == True %}
+                <td><span class="oi oi-check"></span></td>
+            {% endif %}
+        </tr>
+        <tr>
+            <th>Temperature Sensor:</th>
+            {% if adcp.TemperaturePresent == True %}
+                <td><span class="oi oi-check"></span></td>
+            {% endif %}
+        </tr>
+        <tr>
+            <th>Pressure Sensor:</th>
+            {% if adcp.PressureSensorPresent == True %}
+                <td><span class="oi oi-check"></span></td>
+            {% endif %}
+        </tr>
+        {% if adcp.PressureSensorPresent == True %}
+            <th>Pressure Sensor Rating:</th>
+            <td>{{ adcp.PressureSensorRating }}</td>
+        {% endif %}
+        <tr>
+            <th>Ethernet Present:</th>
+            {% if adcp.EthernetInstalled == True %}
+                <td><span class="oi oi-check"></span></td>
+            {% endif %}
+        </tr>
+        <tr>
+            <th>Trigger In:</th>
+            {% if adcp.IsTriggerIn == True %}
+                <td><span class="oi oi-check"></span></td>
+            {% endif %}
+        </tr>
+        <tr>
+            <th>Trigger Out:</th>
+            {% if adcp.IsTriggerOut == True %}
+                <td><span class="oi oi-check"></span></td>
+            {% endif %}
+        </tr>
+    </tbody>
+</table>

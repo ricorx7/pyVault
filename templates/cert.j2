@@ -15,11 +15,41 @@
 {% endblock %} 
 
 {% block content %}
-    <h1>{{adcp.SerialNumber}}</h1>
-    <p class="important">
-        {{adcp.Customer}}
-    </p>
+    <div class="row">
+        <div class="col-md-2">
 
-    {% include 'compasscal.j2' with context %}
+        </div>
+        <div class="col">
+            <h1>ADCP/DVL Test Certificate</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <strong>Serial Number:</strong> {{ adcp.SerialNumber }}
+        </div>
+        <div class="col">
+            <strong>Order Number:</strong> {{ adcp.OrderNumber }}
+        </div>
+        <div class="col">
+            <strong>Customer: </strong><p class="important">{{ adcp.Customer }} </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            {% include 'cert_left.j2' with context %}
+        </div>
+        <div class="col">
+
+                {% include 'compasscal.j2' with context %}
+
+                {% include 'tanktest_noise.j2' with context %}
+
+        </div>
+    </div>
+
+
+
+    {% include 'hydrophone.j2' with context %}
 
 {% endblock %}
+

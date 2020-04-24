@@ -1,38 +1,50 @@
-{% for compass in compasscals %} 
-    {{compass.Created}} 
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-            <th scope="col">Heading</th>
-            <th scope="col">Reading (°)</th>
-            <th scope="col">Error (°)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">0°</th>
-                <td>{{ compass.Point1_Post_Hdg|round(1) }}</td>
-                {% if compass.Point1_Post_Hdg > 300 %}
-                    <td>{{ (360 - compass.Point1_Post_Hdg)|round(1) }}</td>
-                {% else %}
-                    <td>{{ (0 - compass.Point1_Post_Hdg)|round(1) }}</td>
-                {% endif %}
-            </tr>
-            <tr>
-                <th scope="row">90°</th>
-                <td>{{ compass.Point2_Post_Hdg|round(1) }}</td>
-                <td>{{ (90 - compass.Point2_Post_Hdg)|round(1) }}</td>
-            </tr>
-            <tr>
-                <th scope="row">180°</th>
-                <td>{{ compass.Point3_Post_Hdg|round(1) }}</td>
-                <td>{{ (180 - compass.Point3_Post_Hdg)|round(1) }}</td>
-            </tr>
-            <tr>
-                <th scope="row">270°</th>
-                <td>{{ compass.Point4_Post_Hdg|round(1) }}</td>
-                <td>{{ (270 - compass.Point4_Post_Hdg)|round(1) }}</td>
-            </tr>
-        </tbody>
-    </table>
-{% endfor %} 
+<div class="row">
+<h3>Compass Calibration</h3>
+</div>
+{% for compass in compasscals %}
+<div class="row">
+    <div class="col-lg">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                <th scope="col">Heading</th>
+                <th scope="col">Reading (°)</th>
+                <th scope="col">Error (°)</th>
+                <th scope="col">Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">0°</th>
+                    <td>{{ compass.post_rnd_b0 }}</td>
+                    <td>{{ compass.result_rnd_b0 }}</td>
+                    <td><span class="badge badge-secondary">{{ compass.result_b0 }}</span></td>
+                </tr>
+                <tr>
+                    <th scope="row">90°</th>
+                    <td>{{ compass.post_rnd_b1 }}</td>
+                    <td>{{ compass.result_rnd_b1 }}</td>
+                    <td><span class="badge badge-secondary">{{ compass.result_b1 }}</span></td>
+                </tr>
+                <tr>
+                    <th scope="row">180°</th>
+                    <td>{{ compass.post_rnd_b2 }}</td>
+                    <td>{{ compass.result_rnd_b2 }}</td>
+                    <td><span class="badge badge-secondary">{{ compass.result_b2 }}</span></td>
+                </tr>
+                <tr>
+                    <th scope="row">270°</th>
+                    <td>{{ compass.post_rnd_b3 }}</td>
+                    <td>{{ compass.result_rnd_b3 }}</td>
+                    <td><span class="badge badge-secondary">{{ compass.result_b3 }}</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endfor %}
+<div class="row">
+    <div class="col-md-5">
+        <small>* ±2° error acceptance criteria</small>
+    </div>
+</div>
