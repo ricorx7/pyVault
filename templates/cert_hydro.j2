@@ -25,15 +25,30 @@
     </div>
     <div class="row">
         <div class="col-md-3">
-            <strong>Serial Number:</strong> {{ adcp.SerialNumber }}
+            <div class="row">
+                <strong>Serial Number:</strong>
+            </div>
+            <div class="row">
+                {{ adcp.SerialNumber }}
+            </div>
         </div>
         <div class="col"></div>
         <div class="col-md-2">
-            <strong>Order Number:</strong> {{ adcp.OrderNumber }}
+            <div class="row">
+                <strong>Order Number:</strong>
+            </div>
+            <div class="row">
+                {{ adcp.OrderNumber }}
+            </div>
         </div>
         <div class="col"></div>
         <div class="col-md-2">
-            <strong>Customer: </strong><p class="important">{{ adcp.Customer }} </p>
+            <div class="row">
+                <strong>Customer: </strong>
+            </div>
+            <div class="row">
+                {{ adcp.Customer }}
+            </div>
         </div>
         <div class="col"></div>
     </div>
@@ -47,12 +62,10 @@
 
                 {% include 'tanktest_noise.j2' with context %}
 
-                {% include 'laketest_snr.j2' with context %}
-
         </div>
     </div>
 
-    {% include 'dmg.j2' with context %}
+    {% include 'hydrophone.j2' with context %}
 
     <div class="row">
         <div class="col-md-2">

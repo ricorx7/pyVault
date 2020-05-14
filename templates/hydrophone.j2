@@ -2,24 +2,18 @@
     <h4>Hydrophone Tank Test</h4>
 </div>
 {% for hydro in hydros %}
-    <div class="alert alert-info" role="alert">
-        <div class="row">
-            <div class="col">
-                <p><strong>{{ hydro.SubsystemDescStr }}</strong></p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <strong>Signal Result: </strong><span class="badge badge-secondary">{{ hydro.TestResultSignal }}</span>
-            </div>
-            <div class="col-md-3">
-                <strong>Range Loss Result: </strong><span class="badge badge-secondary">{{ hydro.TestResultRangeLoss }}</span>
-            </div>
-        </div>
+    <div>
         <div class="row">
             <div class="col-lg">
                 <table class="table">
                     <thead class="thead-dark">
+                        <tr class="table-info">
+                            <td colspan="5">{{ hydro.SubsystemDescStr }}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1"><strong>Signal Result: </strong><span class="badge badge-secondary">{{ hydro.TestResultSignal }}</span></td>
+                            <td colspan="4"><strong>Range Loss Result: </strong><span class="badge badge-secondary">{{ hydro.TestResultRangeLoss }}</span></td>
+                        </tr>
                         <tr>
                             <th scope="col">RESULTS</th>
                             <th scope="col">Beam 0</th>
@@ -59,11 +53,6 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <small>{{hydro.Created}}</small>
             </div>
         </div>
     </div>

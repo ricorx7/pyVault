@@ -64,12 +64,16 @@
             <th>Temperature Sensor:</th>
             {% if adcp.TemperaturePresent == True %}
                 <td><span class="oi oi-check"></span></td>
+            {% else %}
+                <td></td>
             {% endif %}
         </tr>
         <tr>
             <th>Pressure Sensor:</th>
             {% if adcp.PressureSensorPresent == True %}
                 <td><span class="oi oi-check"></span></td>
+            {% else %}
+                <td></td>
             {% endif %}
         </tr>
         {% if adcp.PressureSensorPresent == True %}
@@ -80,18 +84,24 @@
             <th>Ethernet Present:</th>
             {% if adcp.EthernetInstalled == True %}
                 <td><span class="oi oi-check"></span></td>
+            {% else %}
+                <td></td>
             {% endif %}
         </tr>
         <tr>
             <th>Trigger In:</th>
             {% if adcp.IsTriggerIn == True %}
                 <td><span class="oi oi-check"></span></td>
+            {% else %}
+                <td></td>
             {% endif %}
         </tr>
         <tr>
             <th>Trigger Out:</th>
             {% if adcp.IsTriggerOut == True %}
                 <td><span class="oi oi-check"></span></td>
+            {% else %}
+                <td></td>
             {% endif %}
         </tr>
     </tbody>

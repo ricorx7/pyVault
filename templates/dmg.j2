@@ -1,0 +1,40 @@
+<div class="row">
+    <h4>Distance Made Good</h4>
+</div>
+{% for dmg in lake_dmgs %}
+<div class="row">
+    <div class="col-lg">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr class="table-info">
+                    <td>Beam Forward: <strong>{{ dmg.TestOrientation }}</strong></td>
+                    <td colspan="4">{{ dmg.SubsystemDescStr }}</td>
+                </tr>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Distance (m)</th>
+                    <th scope="col">Direction (°)</th>
+                    <th scope="col">Distance Error (%)</th>
+                    <th scope="col">Direction Error (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">GPS</th>
+                    <td>{{ dmg.GpsDistance }}</td>
+                    <td>{{ dmg.GpsDirection }}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th scope="row">Bottom Track Earth</th>
+                    <td>{{ dmg.BtDistance }}</td>
+                    <td>{{ dmg.BtDirection }}</td>
+                    <td>{{ dmg.DistanceError }}</td>
+                    <td>{{ dmg.DirectionError }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endfor %}

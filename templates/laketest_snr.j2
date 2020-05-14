@@ -1,0 +1,46 @@
+<div class="row">
+    <h4>Signal to Noise Ratio</h4>
+</div>
+{% for snr in lake_snrs %}
+<div class="row">
+    <div class="col-lg">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr class="table-info">
+                    <td colspan="5">{{ snr.SubsystemDescStr }}</td>
+                </tr>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Beam 0</th>
+                    <th scope="col">Beam 1</th>
+                    <th scope="col">Beam 2</th>
+                    <th scope="col">Beam 3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Signal (dB)</th>
+                    <td>{{ snr.sig_b_0 }}</td>
+                    <td>{{ snr.sig_b_1 }}</td>
+                    <td>{{ snr.sig_b_2 }}</td>
+                    <td>{{ snr.sig_b_3 }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Noise (dB)</th>
+                    <td>{{ snr.noise_b_0 }}</td>
+                    <td>{{ snr.noise_b_1 }}</td>
+                    <td>{{ snr.noise_b_2 }}</td>
+                    <td>{{ snr.noise_b_3 }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">SNR (dB)</th>
+                    <td>{{ snr.snr_b_0 }}</td>
+                    <td>{{ snr.snr_b_1 }}</td>
+                    <td>{{ snr.snr_b_2 }}</td>
+                    <td>{{ snr.snr_b_3 }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endfor %}

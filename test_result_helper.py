@@ -142,3 +142,54 @@ def process_tanktest_noise(tank_noise: pymongo.cursor.Cursor):
             tank['amp_result_b_3'] = "FAIL"
 
     return tanktest_noise_list
+
+
+def process_lake_dmg(lake_dmg: pymongo.cursor.Cursor):
+    """
+    Round the values in the Lake Test Distance Made Good results.  Then check
+    if the Lake Test Distance Made Good passed or failed for each beam.
+    :param lake_dmg: Lake DMG cursor to the results
+    :return: List of all the results from the query.
+    """
+    # Convert the cursor to a list
+    # I can then modify the information
+    lake_dmg_list = list(lake_dmg)
+
+    for dmg in lake_dmg_list:
+        # Distance
+        dmg['dmg_distance_result'] = "PASS"
+
+
+def process_lake_snr(lake_snr: pymongo.cursor.Cursor):
+    """
+    Round the values in the Lake Test SNR results.  Then check
+    if the Lake Test SNR passed or failed for each beam.
+    :param lake_snr: Lake SNR cursor to the results
+    :return: List of all the results from the query.
+    """
+    # Convert the cursor to a list
+    # I can then modify the information
+    lake_snr_list = list(lake_snr)
+
+    for snr in lake_snr_list:
+        # Beam 0
+        snr['sig_b_0'] = round(snr['Beam0SignalLake'], 2)
+        snr['noise_b_0'] = round(snr['Beam0NoiseFloor'], 2)
+        snr['snr_b_0'] = round(snr['Beam0SnrLake'], 2)
+
+        # Beam 1
+        snr['sig_b_1'] = round(snr['Beam1SignalLake'], 2)
+        snr['noise_b_1'] = round(snr['Beam1NoiseFloor'], 2)
+        snr['snr_b_1'] = round(snr['Beam1SnrLake'], 2)
+
+        # Beam 2
+        snr['sig_b_2'] = round(snr['Beam2SignalLake'], 2)
+        snr['noise_b_2'] = round(snr['Beam2NoiseFloor'], 2)
+        snr['snr_b_2'] = round(snr['Beam2SnrLake'], 2)
+
+        # Beam 3
+        snr['sig_b_3'] = round(snr['Beam3SignalLake'], 2)
+        snr['noise_b_3'] = round(snr['Beam3NoiseFloor'], 2)
+        snr['snr_b_3'] = round(snr['Beam3SnrLake'], 2)
+
+    return lake_snr_list

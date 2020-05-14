@@ -30,6 +30,24 @@ def adcp_cert_page(serial_number):
     adcp = mongo.db.adcps.find_one_or_404({"SerialNumber": serial_number})
     compass = mongo.db.CompassCalResults.find({"SerialNumber": serial_number, "IsSelected": True})
     compass_list = test_result_helper.process_compass_cal(compass)
+    lake_dmgs = mongo.db.WaterTestResults.find({"SerialNumber": serial_number, "IsSelected": True})
+    lake_snrs = mongo.db.SnrTestResults.find({"SerialNumber": serial_number, "IsSelected": True})
+    lake_snr_list = test_result_helper.process_lake_snr(lake_snrs)
+    tank_noise = mongo.db.TankTestResults.find({"SerialNumber": serial_number, "IsSelected": True, "TankTestType": "Noise"})
+    tank_noise_list = test_result_helper.process_tanktest_noise(tank_noise)
+    print(adcp)
+    print(compass_list)
+    print(lake_dmgs)
+    print(lake_snr_list)
+    print(tank_noise_list)
+    return render_template("cert.j2", adcp=adcp, compasscals=compass_list, lake_dmgs=lake_dmgs, lake_snrs=lake_snr_list, tank_noises=tank_noise_list)
+
+
+@app.route("/cert_hydro/<serial_number>")
+def adcp_cert_hydro_page(serial_number):
+    adcp = mongo.db.adcps.find_one_or_404({"SerialNumber": serial_number})
+    compass = mongo.db.CompassCalResults.find({"SerialNumber": serial_number, "IsSelected": True})
+    compass_list = test_result_helper.process_compass_cal(compass)
     hydro = mongo.db.HydrophoneLakeTestResults.find({"SerialNumber": serial_number, "IsSelected": True})
     tank_noise = mongo.db.TankTestResults.find({"SerialNumber": serial_number, "IsSelected": True, "TankTestType": "Noise"})
     tank_noise_list = test_result_helper.process_tanktest_noise(tank_noise)
@@ -37,7 +55,9 @@ def adcp_cert_page(serial_number):
     print(compass_list)
     print(hydro)
     print(tank_noise_list)
-    return render_template("cert.j2", adcp=adcp, compasscals=compass_list, hydros=hydro, tank_noises=tank_noise_list)
+    return render_template("cert_hydro.j2", adcp=adcp, compasscals=compass_list, hydros=hydro, tank_noises=tank_noise_list)
+
+
 
 @app.route("/")
 def adcp_list_page():
